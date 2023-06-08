@@ -2,12 +2,12 @@
   "name": "reat-ts-vite",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --mode production",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
+    "preview": "vite preview",
+    "prepare ": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -18,7 +18,14 @@
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.8.1"
   },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts}": [
+      "eslint src"
+    ]
+  },
   "devDependencies": {
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
@@ -29,9 +36,22 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
-    "typescript": "^5.0.2",
+    "typescript": "*",
     "vite": "^4.3.9",
     "sass": "^1.63.2",
-    "vite-plugin-require-transform": "^1.0.5"
+    "commitizen": "^4.3.0",
+    "commitlint": "^17.6.5",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "6.3.0",
+    "vite-plugin-require-transform": "^1.0.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "rollup-plugin-visualizer": "^5.9.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
